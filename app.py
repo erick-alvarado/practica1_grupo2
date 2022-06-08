@@ -6,7 +6,10 @@ app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-
+def fibonacci(n):
+    if n > 1:
+        return fibonacci(n-1) + fibonacci(n-2)
+    return n
 
 @app.route("/")
 @cross_origin()
@@ -27,5 +30,14 @@ def paroimpar():
         return jsonify({"resultado":"Par"})
     else:
         return jsonify({"resultado":"Impar"})
+
+@app.route('/fibo', methods=['POST'])
+@cross_origin()
+def fibo():
+    return {
+        "fibo": fibonacci(request.json['fibo'])
+    }
+
+
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
