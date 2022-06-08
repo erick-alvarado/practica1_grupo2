@@ -68,5 +68,12 @@ def multiplicacion():
     num2 = request.json['num2']
     return jsonify({"resultado":num1*num2})
 
+@app.route('/division', methods=['POST'])
+@cross_origin()
+def division():
+    num1 = request.json['num1']
+    num2 = request.json['num2']
+    return jsonify({"result": int(num1)/int(num2)})
+
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
