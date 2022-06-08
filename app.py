@@ -52,5 +52,14 @@ def raiz():
     return jsonify({"resultado": result})
 
 
+@app.route("/potencia", methods=["GET"])
+@cross_origin()
+def potencia(): 
+    numero = request.json["num"]
+    result = numero ** 3
+    return jsonify({
+        "resultado": result
+    })
+
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
