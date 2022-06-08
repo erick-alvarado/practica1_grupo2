@@ -61,5 +61,12 @@ def potencia():
         "resultado": result
     })
 
+@app.route('/multiplicacion', methods=['POST'])
+@cross_origin()
+def multiplicacion():
+    num1 = request.json['num1']
+    num2 = request.json['num2']
+    return jsonify({"resultado":num1*num2})
+
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
