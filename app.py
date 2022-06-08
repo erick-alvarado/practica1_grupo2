@@ -39,9 +39,18 @@ def fibo():
     }
 
 @app.route('/alreves/palabra:<string:word>', methods=["GET"])
+@cross_origin()
 def alreves(word):
 
     return {'message' :word[::-1]}
+
+@app.route("/raiz", methods=["GET"])
+@cross_origin()
+def raiz(): 
+    numero = request.json["num"]
+    result = numero**(1/3)
+    return jsonify({"resultado": result})
+
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
