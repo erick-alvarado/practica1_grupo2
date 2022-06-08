@@ -18,6 +18,14 @@ def hello():
                     "estudiante4":"Joel Estuardo Rodríguez Santos - 201115018 - Practica 1 - Grupo 2",
                     "estudiante5":"Cesar Leonel Chamale Sican - 201700634 - Practica 1 - Grupo 2"
                     })
-
+                    
+@app.route('/paroimpar', methods=['POST'])
+@cross_origin()
+def paroimpar():
+    num = request.json['num']
+    if num % 2 == 0:
+        return jsonify({"resultado":"Par"})
+    else:
+        return jsonify({"resultado":"Impar"})
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
