@@ -26,7 +26,8 @@ def hello():
 @cross_origin()
 def paroimpar():
     num = request.json['num']
-    if num % 2 == 0:
+    print(num)
+    if int(num) % 2 == 0:
         return jsonify({"resultado":"Par"})
     else:
         return jsonify({"resultado":"Impar"})
