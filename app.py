@@ -15,7 +15,8 @@ def hello():
                     "estudiante1":"Erick Alexander Alvarado Guerra - 201800546 - Practica 1 - Grupo 2",
                     "estudiante2":"Luis Fernando Culajay Sandoval - 201903838 - Practica 1 - Grupo 2",
                     "estudiante3":"Luis Felipe Delgado Benitez - 201900051 - Practica 1 - Grupo 2",
-                    "estudiante4":"Joel Estuardo Rodríguez Santos - 201115018 - Practica 1 - Grupo 2"
+                    "estudiante4":"Joel Estuardo Rodríguez Santos - 201115018 - Practica 1 - Grupo 2",
+                    "estudiante5":"Cesar Leonel Chamale Sican - 201700634 - Practica 1 - Grupo 2"
                     })
 
 if __name__ == '__main__':
