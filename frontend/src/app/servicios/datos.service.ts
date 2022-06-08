@@ -24,7 +24,17 @@ export class DatosService {
     };
     return this.http.post<any>(this.path + 'fibo', body, httpOptions);
   }
-
+  postParidad(num1: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    const body = {
+      "num": num1
+  };
+    return this.http.post<any>(this.path + 'paroimpar', body, httpOptions);
+  }
   getTest() {
     return this.http.get<any>(this.path);
   }

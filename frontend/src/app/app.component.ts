@@ -24,7 +24,9 @@ export class AppComponent {
   constructor(private datosServicio: DatosService) {}
   
   btn_parimpar() {
-    console.log("parimpar", this.num_parimpar)
+    this.datosServicio.postParidad(this.num_parimpar).subscribe(res => {
+      console.log(res)
+    })
   }
   
   btn_fibo() {
