@@ -38,6 +38,10 @@ def fibo():
         "fibo": fibonacci(request.json['fibo'])
     }
 
+@app.route('/alreves/palabra:<string:word>', methods=["GET"])
+def alreves(word):
+
+    return {'message' :word[::-1]}
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
