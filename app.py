@@ -12,7 +12,9 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @cross_origin()
 def hello():
     return jsonify({"name":"Analisi y Diseño 1",
-                    "estudiante1":"Erick Alexander Alvarado Guerra - 201800546 - Practica 1 - Grupo 2"})
+                    "estudiante1":"Erick Alexander Alvarado Guerra - 201800546 - Practica 1 - Grupo 2",
+                    "estudiante1":"Luis Fernando Culajay Sandoval - 201903838 - Practica 1 - Grupo 2"
+                    })
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
