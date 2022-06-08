@@ -6,7 +6,10 @@ app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-
+def fibonacci(n):
+    if n > 1:
+        return fibonacci(n-1) + fibonacci(n-2)
+    return n
 
 @app.route("/")
 @cross_origin()
@@ -27,5 +30,50 @@ def paroimpar():
         return jsonify({"resultado":"Par"})
     else:
         return jsonify({"resultado":"Impar"})
+
+@app.route('/fibo', methods=['POST'])
+@cross_origin()
+def fibo():
+    return {
+        "fibo": fibonacci(request.json['fibo'])
+    }
+
+@app.route('/alreves/palabra:<string:word>', methods=["GET"])
+@cross_origin()
+def alreves(word):
+
+    return {'message' :word[::-1]}
+
+@app.route("/raiz", methods=["GET"])
+@cross_origin()
+def raiz(): 
+    numero = request.json["num"]
+    result = numero**(1/3)
+    return jsonify({"resultado": result})
+
+
+@app.route("/potencia", methods=["GET"])
+@cross_origin()
+def potencia(): 
+    numero = request.json["num"]
+    result = numero ** 3
+    return jsonify({
+        "resultado": result
+    })
+
+@app.route('/multiplicacion', methods=['POST'])
+@cross_origin()
+def multiplicacion():
+    num1 = request.json['num1']
+    num2 = request.json['num2']
+    return jsonify({"resultado":num1*num2})
+
+@app.route('/division', methods=['POST'])
+@cross_origin()
+def division():
+    num1 = request.json['num1']
+    num2 = request.json['num2']
+    return jsonify({"result": int(num1)/int(num2)})
+
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
