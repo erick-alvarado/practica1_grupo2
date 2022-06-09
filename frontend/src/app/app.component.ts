@@ -49,7 +49,9 @@ export class AppComponent {
   }
 
   btn_raiz() {
-    console.log("raiz", this.num_raiz)
+    this.datosServicio.getRaiz(this.num_raiz).subscribe(res => {
+      this.resultado = res.resultado
+    })
   }
 
   btn_mul() {
