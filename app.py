@@ -1,4 +1,5 @@
 import json
+import hashlib
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 
@@ -27,29 +28,44 @@ def hello():
 def paroimpar():
     num = request.json['num']
     print(num)
-    if int(num) % 2 == 0:
-        return jsonify({"resultado":"Par"})
-    else:
-        return jsonify({"resultado":"Impar"})
+    try:
+        if int(num) % 2 == 0:
+            return jsonify({"resultado":"Par"})
+        else:
+            return jsonify({"resultado":"Impar"})
+    except Exception:
+        return jsonify({"resultado":"Solo se aceptan datos numericos"})
+
+    
 
 @app.route('/fibo', methods=['POST'])
 @cross_origin()
 def fibo():
+    num = request.json['fibo']
+    if (num > 0 ):
+        return {
+            "fibo": fibonacci(num)
+        }
     return {
-        "fibo": fibonacci(request.json['fibo'])
+        "fibo": 0
     }
 
 @app.route('/alreves/palabra:<string:word>', methods=["GET"])
 @cross_origin()
 def alreves(word):
 
-    return {'message' :word[::-1]}
+    return {'resultado' : word.upper() + ": " + word[::-1] + ": " + hashlib.sha256(word[::-1].encode()).hexdigest()}
 
 @app.route("/raiz", methods=["GET"])
 @cross_origin()
 def raiz(): 
     numero = (int)(request.args.get("num",0))
-    result = numero**(1/3)
+    result = 0
+    if numero < -1:
+        numero = abs(numero)
+        result = (numero**(1/3))*-1
+    else:
+        result = numero**(1/3) 
     return jsonify({"resultado": result})
 
 
@@ -65,14 +81,20 @@ def potencia():
 def multiplicacion():
     num1 = request.json['num1']
     num2 = request.json['num2']
-    return jsonify({"resultado":int(num1)*int(num2)})
+    try:
+        return jsonify({"resultado":num1*num2})
+    except Exception:
+        return jsonify({"resultados":"Solo se aceptan datos numericos"})
 
 @app.route('/division', methods=['POST'])
 @cross_origin()
 def division():
     num1 = request.json['num1']
     num2 = request.json['num2']
-    return jsonify({"resultado": int(num1)/int(num2)})
+    try:
+        return jsonify({"resultado": int(num1)/int(num2)})
+    except Exception:
+        return jsonify({"resultados":"Solo se aceptan datos numericos"})
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

@@ -41,7 +41,7 @@ export class AppComponent {
 
   btn_alreves() {
     this.datosServicio.getAlreves(this.pal_alreves).subscribe(res => {
-      this.resultado = res.message
+      this.resultado = res.resultado
     })
   }
 
