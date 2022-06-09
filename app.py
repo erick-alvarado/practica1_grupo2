@@ -60,7 +60,12 @@ def alreves(word):
 @cross_origin()
 def raiz(): 
     numero = (int)(request.args.get("num",0))
-    result = numero**(1/3)
+    result = 0
+    if numero < -1:
+        numero = abs(numero)
+        result = (numero**(1/3))*-1
+    else:
+        result = numero**(1/3) 
     return jsonify({"resultado": result})
 
 
