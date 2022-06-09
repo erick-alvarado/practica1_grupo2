@@ -19,6 +19,8 @@ export class AppComponent {
   num1_div: number = 0;
   num2_div: number = 0;
 
+  resultado = ''
+
   title = 'frontend';
 
   constructor(private datosServicio: DatosService) {}
@@ -26,33 +28,48 @@ export class AppComponent {
   btn_parimpar() {
     this.datosServicio.postParidad(this.num_parimpar).subscribe(res => {
       console.log(res)
+      this.resultado = res.resultado
     })
   }
   
   btn_fibo() {
     this.datosServicio.postFibo(this.num_fibo).subscribe(res => {
       console.log(res)
+      this.resultado = res.fibo
     })
   }
 
   btn_alreves() {
-    console.log("alreves", this.pal_alreves)
+    this.datosServicio.getAlreves(this.pal_alreves).subscribe(res => {
+      this.resultado = res.message
+    })
   }
 
   btn_potencia() {
-    console.log("potencia", this.num_potencia)
+    this.datosServicio.getPotencia(this.num_potencia).subscribe(res => {
+      console.log(res)
+      this.resultado = res.resultado
+    })
   }
 
   btn_raiz() {
-    console.log("raiz", this.num_raiz)
+    this.datosServicio.getRaiz(this.num_raiz).subscribe(res => {
+      this.resultado = res.resultado
+    })
   }
 
   btn_mul() {
-    console.log("mul", this.num1_mul, this.num2_mul)
+    this.datosServicio.postMultiplicacion(this.num1_mul,this.num2_mul).subscribe(res => {
+      console.log(res)
+      this.resultado = res.resultado
+    })
   }
 
   btn_div() {
-    console.log("div", this.num1_div, this.num2_div)
+    this.datosServicio.postDivision(this.num1_div,this.num2_div).subscribe(res => {
+      console.log(res)
+      this.resultado = res.resultado
+    })
   }
 
 }
