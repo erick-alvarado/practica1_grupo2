@@ -35,6 +35,9 @@ export class DatosService {
   };
     return this.http.post<any>(this.path + 'paroimpar', body, httpOptions);
   }
+  getAlreves(palabra: String) {
+    return this.http.get<any>(this.path + 'alreves/palabra:'+palabra);
+  }
   getTest() {
     return this.http.get<any>(this.path);
   }
