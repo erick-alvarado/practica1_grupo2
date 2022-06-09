@@ -28,6 +28,7 @@ export class AppComponent {
   btn_parimpar() {
     this.datosServicio.postParidad(this.num_parimpar).subscribe(res => {
       console.log(res)
+      this.resultado = res.resultado
     })
   }
   
@@ -45,7 +46,10 @@ export class AppComponent {
   }
 
   btn_potencia() {
-    console.log("potencia", this.num_potencia)
+    this.datosServicio.getPotencia(this.num_potencia).subscribe(res => {
+      console.log(res)
+      this.resultado = res.resultado
+    })
   }
 
   btn_raiz() {
@@ -55,11 +59,17 @@ export class AppComponent {
   }
 
   btn_mul() {
-    console.log("mul", this.num1_mul, this.num2_mul)
+    this.datosServicio.postMultiplicacion(this.num1_mul,this.num2_mul).subscribe(res => {
+      console.log(res)
+      this.resultado = res.resultado
+    })
   }
 
   btn_div() {
-    console.log("div", this.num1_div, this.num2_div)
+    this.datosServicio.postDivision(this.num1_div,this.num2_div).subscribe(res => {
+      console.log(res)
+      this.resultado = res.resultado
+    })
   }
 
 }
