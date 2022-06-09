@@ -39,7 +39,9 @@ export class AppComponent {
   }
 
   btn_alreves() {
-    console.log("alreves", this.pal_alreves)
+    this.datosServicio.getAlreves(this.pal_alreves).subscribe(res => {
+      this.resultado = res.message
+    })
   }
 
   btn_potencia() {
