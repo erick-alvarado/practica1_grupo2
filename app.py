@@ -40,8 +40,13 @@ def paroimpar():
 @app.route('/fibo', methods=['POST'])
 @cross_origin()
 def fibo():
+    num = request.json['fibo']
+    if (num > 0 ):
+        return {
+            "fibo": fibonacci(num)
+        }
     return {
-        "fibo": fibonacci(request.json['fibo'])
+        "fibo": 0
     }
 
 @app.route('/alreves/palabra:<string:word>', methods=["GET"])
