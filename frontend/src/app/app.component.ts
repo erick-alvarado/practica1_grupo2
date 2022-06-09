@@ -19,6 +19,8 @@ export class AppComponent {
   num1_div: number = 0;
   num2_div: number = 0;
 
+  resultado = ''
+
   title = 'frontend';
 
   constructor(private datosServicio: DatosService) {}
@@ -32,6 +34,7 @@ export class AppComponent {
   btn_fibo() {
     this.datosServicio.postFibo(this.num_fibo).subscribe(res => {
       console.log(res)
+      this.resultado = res.fibo
     })
   }
 
