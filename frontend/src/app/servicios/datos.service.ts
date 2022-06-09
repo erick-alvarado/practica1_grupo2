@@ -35,6 +35,18 @@ export class DatosService {
   };
     return this.http.post<any>(this.path + 'paroimpar', body, httpOptions);
   }
+
+  getRaiz(num: number) {
+
+    const headers = new HttpHeaders({
+       'Content-Type': 'application/json',
+     })
+
+   const params = new HttpParams().append('num', num);
+
+   return this.http.get<any>(this.path + 'raiz', {headers, params});
+ }
+
   getAlreves(palabra: String) {
     return this.http.get<any>(this.path + 'alreves/palabra:'+palabra);
   }

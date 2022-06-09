@@ -48,7 +48,7 @@ def alreves(word):
 @app.route("/raiz", methods=["GET"])
 @cross_origin()
 def raiz(): 
-    numero = request.json["num"]
+    numero = (int)(request.args.get("num",0))
     result = numero**(1/3)
     return jsonify({"resultado": result})
 
@@ -56,11 +56,9 @@ def raiz():
 @app.route("/potencia", methods=["GET"])
 @cross_origin()
 def potencia(): 
-    numero = request.json["num"]
+    numero = (int)(request.args.get("num",0))
     result = numero ** 3
-    return jsonify({
-        "resultado": result
-    })
+    return jsonify({"resultado": result})
 
 @app.route('/multiplicacion', methods=['POST'])
 @cross_origin()
