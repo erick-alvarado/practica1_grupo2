@@ -81,14 +81,20 @@ def potencia():
 def multiplicacion():
     num1 = request.json['num1']
     num2 = request.json['num2']
-    return jsonify({"resultado":int(num1)*int(num2)})
+    try:
+        return jsonify({"resultado":num1*num2})
+    except Exception:
+        return jsonify({"resultados":"Solo se aceptan datos numericos"})
 
 @app.route('/division', methods=['POST'])
 @cross_origin()
 def division():
     num1 = request.json['num1']
     num2 = request.json['num2']
-    return jsonify({"resultado": int(num1)/int(num2)})
+    try:
+        return jsonify({"resultado": int(num1)/int(num2)})
+    except Exception:
+        return jsonify({"resultados":"Solo se aceptan datos numericos"})
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
