@@ -1,4 +1,5 @@
 import json
+import hashlib
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 
@@ -53,7 +54,7 @@ def fibo():
 @cross_origin()
 def alreves(word):
 
-    return {'message' :word[::-1]}
+    return {'resultado' : word.upper() + ": " + word[::-1] + ": " + hashlib.sha256(word[::-1].encode()).hexdigest()}
 
 @app.route("/raiz", methods=["GET"])
 @cross_origin()
