@@ -27,10 +27,15 @@ def hello():
 def paroimpar():
     num = request.json['num']
     print(num)
-    if int(num) % 2 == 0:
-        return jsonify({"resultado":"Par"})
-    else:
-        return jsonify({"resultado":"Impar"})
+    try:
+        if int(num) % 2 == 0:
+            return jsonify({"resultado":"Par"})
+        else:
+            return jsonify({"resultado":"Impar"})
+    except Exception:
+        return jsonify({"resultado":"Solo se aceptan datos numericos"})
+
+    
 
 @app.route('/fibo', methods=['POST'])
 @cross_origin()
