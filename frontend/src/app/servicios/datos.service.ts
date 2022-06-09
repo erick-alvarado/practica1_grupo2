@@ -50,6 +50,46 @@ export class DatosService {
   getAlreves(palabra: String) {
     return this.http.get<any>(this.path + 'alreves/palabra:'+palabra);
   }
+
+  postDivision(num1: number, num2: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    const body = {
+      "num1": num1,
+      "num2": num2,
+
+  };
+    return this.http.post<any>(this.path + 'division', body, httpOptions);
+  }
+
+  postMultiplicacion(num1: number, num2: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    const body = {
+      "num1": num1,
+      "num2": num2,
+
+  };
+    return this.http.post<any>(this.path + 'multiplicacion', body, httpOptions);
+  }
+
+  getPotencia(num: number) {
+
+    const headers = new HttpHeaders({
+       'Content-Type': 'application/json',
+     })
+
+   const params = new HttpParams().append('num', num);
+
+   return this.http.get<any>(this.path + 'potencia', {headers, params});
+ }
+
   getTest() {
     return this.http.get<any>(this.path);
   }
