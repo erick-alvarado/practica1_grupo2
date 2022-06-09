@@ -65,7 +65,7 @@ def potencia():
 def multiplicacion():
     num1 = request.json['num1']
     num2 = request.json['num2']
-    return jsonify({"resultado":num1*num2})
+    return jsonify({"resultado":int(num1)*int(num2)})
 
 @app.route('/division', methods=['POST'])
 @cross_origin()
