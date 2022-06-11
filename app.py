@@ -41,7 +41,7 @@ def paroimpar():
 @app.route('/fibo', methods=['POST'])
 @cross_origin()
 def fibo():
-    num = int(request.json['fibo'])
+    num = request.json['fibo']
     if (num > 0 ):
         return {
             "fibo": fibonacci(num)
@@ -82,9 +82,9 @@ def multiplicacion():
     num1 = request.json['num1']
     num2 = request.json['num2']
     try:
-        return jsonify({"resultado":int(num1)*int(num2)})
+        return jsonify({"resultado":num1*num2})
     except Exception:
-        return jsonify({"resultado":"Solo se aceptan datos numericos"})
+        return jsonify({"resultados":"Solo se aceptan datos numericos"})
 
 @app.route('/division', methods=['POST'])
 @cross_origin()
@@ -92,12 +92,9 @@ def division():
     num1 = request.json['num1']
     num2 = request.json['num2']
     try:
-        if (int(num2)==0):
-            return jsonify({"resultado": "no es posible dividir por 0"})
-        else:
-            return jsonify({"resultado": int(num1)/int(num2)})
+        return jsonify({"resultado": int(num1)/int(num2)})
     except Exception:
-        return jsonify({"resultado":"Solo se aceptan datos numericos"})
+        return jsonify({"resultados":"Solo se aceptan datos numericos cambio c alificacion"})
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
