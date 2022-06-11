@@ -47,7 +47,7 @@ def fibo():
             "fibo": fibonacci(num)
         }
     return {
-        "fibo": 0
+        "fibo": 00
     }
 
 @app.route('/alreves/palabra:<string:word>', methods=["GET"])
